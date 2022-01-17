@@ -76,7 +76,7 @@ namespace December2021.Pages
         }
 
 
-        public void EditTM(IWebDriver driver, string description)
+        public void EditTM(IWebDriver driver, string description, string code)
         {
             Thread.Sleep(3000);
             // Click on go to last page button
@@ -91,7 +91,7 @@ namespace December2021.Pages
             // edit code textbox
             IWebElement codeTextBox = driver.FindElement(By.Id("Code"));
             codeTextBox.Clear();
-            codeTextBox.SendKeys("EditedDecember2021");
+            codeTextBox.SendKeys(code);
 
             // edit description
             IWebElement descriptionTextbox = driver.FindElement(By.Id("Description"));
@@ -122,8 +122,14 @@ namespace December2021.Pages
 
         public string GetEditedDescription(IWebDriver driver)
         {
-            IWebElement EditedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
-            return EditedDescription.Text;
+            IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editedDescription.Text;
+        }
+
+        public string GetEditedCode(IWebDriver driver)
+        {
+            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editedCode.Text;
         }
 
         public void DeleteTM(IWebDriver driver)
