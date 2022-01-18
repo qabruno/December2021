@@ -142,8 +142,7 @@
 							"    var jsonData = pm.response.json();\r",
 							"\r",
 							"    pm.expect(jsonData.status).to.eql(\"success\");\r",
-							"\r",
-							"    pm.expect(jsonData.data).to.eql(pm.collectionVariables.get(\"employeeID\"));\r",
+							"    pm.expect(jsonData.data.toString()).to.eql(pm.environment.get(\"employeeID\").toString());\r",
 							"    pm.expect(jsonData.message).to.eql(\"Successfully! Record has been deleted\");\r",
 							"});"
 						],
